@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=2.0,user-scalable=yes">
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+
+<!-- metatag -->
+<meta name="copyright" content="" />
+<meta name="description" content="Visualization of working log all around the world using FabCam." />
+<meta name="keywords" content="" />
+<!-- /metatag -->
+
+<!-- facebook -->
+<meta property="og:title" content="Fab Analytic Visualization">
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Visualization of working log all around the world using FabCam.">
+<meta property="og:url" content="http://fabcam.cc/vis/">
+<meta property="og:image" content="http://fabcam.cc/vis/assets/images/ogp.png">
+<!-- /facebook -->
+
+<!-- twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="http://fabcam.cc/vis/">
+<meta name="twitter:creator" content="">
+<meta name="twitter:title" content="Fab Analytic Visualization">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://fabcam.cc/vis/assets/images/ogp.png">
+<!-- /twitter -->
+
+
+        <!-- Hammer reload -->
+          <script>
+            setInterval(function(){
+              try {
+                if(typeof ws != 'undefined' && ws.readyState == 1){return true;}
+                ws = new WebSocket('ws://'+(location.host || 'localhost').split(':')[0]+':35353')
+                ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
+                window.onbeforeunload = function() { ws = null }
+                ws.onmessage = function(){
+                  var links = document.getElementsByTagName('link');
+                    for (var i = 0; i < links.length;i++) {
+                    var link = links[i];
+                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) {
+                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,'');
+                      link.href = href + (href.indexOf('?')>=0?'&':'?') + 'hammer='+(new Date().valueOf());
+                    }
+                  }
+                }
+              }catch(e){}
+            }, 1000)
+          </script>
+        <!-- /Hammer reload -->
+      
+
+<script src='assets/js/lib/jquery-1.11.2.min.js'></script>
+<script src='assets/js/lib/jquery.easing.min.js'></script>
+<script src='assets/js/lib/bootstrap.min.js'></script>
+<script src='assets/js/lib/d3.min.js'></script>
+<script src='assets/js/lib/queue.min.js'></script>
+<script src='assets/js/lib/leaflet.js'></script>
+<script src='assets/js/lib/z-modal.js'></script>
+<script src='assets/js/axis.js'></script>
+<script src='assets/js/app.js'></script>
+<link rel='stylesheet' href='assets/css/bootstrap.min.css'>
+<link rel='stylesheet' href='assets/css/leaflet.css'>
+<link rel='stylesheet' href='assets/css/z-modal.css'>
+<link rel='stylesheet' href='assets/css/style.css'>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+<!--[if IE]>
+<link rel='stylesheet' href='assets/css/partials/ie.css' media='all' />
+<![endif]-->
+
+<!-- favicon -->
+<link rel="shortcut icon" href="favicon.ico">
+
+<title>Fab Analytic Visualization</title>
+</head>
+<body>
+
+<header>
+
+</header>
+
+<div id="wrap">
+
+<nav class="navbar navbar-inverse" id="headerArea"><div class="container-fluid">
+
+	  <div class="navbar-header">
+	      <span class="navbar-brand">Fab Analytic Visualization</span>
+	  </div>
+
+		<!-- AUTOPLAY & VIEWMODE -->
+	  <div class="collapse navbar-collapse" id="head">
+
+	      <div class="menuHolder">
+						<div class="btnBlock" id="customBtn">
+							    <div class="radioBtnTitle">CUSTOM</div>
+									<div class="btn-group" role="group" aria-label="...">
+									  <button type="button" class="btn btn-primary" id="prevBtn">PREV</button>
+									  <button type="button" class="btn btn-primary" id="nextBtn">NEXT</button>
+									</div>
+						</div>
+
+						<div class="btnBlock" id="autoBtn">
+							    <div class="radioBtnTitle">AUTOPLAY</div>
+									<div class="btn-group" data-toggle="buttons" id="menuPlay">
+							            <label class="btn btn-primary active">
+							            		<input type="radio" name="playstate" id="option1" autocomplete="off" value="ON" checked> ON
+							            </label>
+							            <label class="btn btn-primary">
+							            		<input type="radio" name="playstate" id="option2" autocomplete="off" value="OFF"> OFF
+							            </label>
+							    </div>
+						</div>
+						<!-- <div class="btnBlock">
+									<div class="radioBtnTitle">VIEWMODE</div>
+							    <div class="btn-group" data-toggle="buttons" id="menuView">
+							            <label class="btn btn-primary active">
+							            		<input type="radio" name="viewstate" id="option1" autocomplete="off" value="MAP" checked> MAP
+							            </label>
+							            <label class="btn btn-primary">
+							            		<input type="radio" name="viewstate" id="option2" autocomplete="off" value="TIMELINE"> TIMELINE
+							            </label>
+							    </div>
+						</div> -->
+	        </div>
+	  </div>
+
+		<!-- 日付ナビ -->
+	  <ul class="nav navbar-nav" id="favnavi"></ul>
+
+</div></nav>
+
+<div id="infoDetailArea">
+
+			<div class="cl100">
+			    <div id="date">
+			        <span id="year"></span>-<span id="month"></span>-<span id="day"></span>
+			    </div>
+			    <div id="time">
+			        <i class="fa fa-clock-o"></i><div id="timedata"></div>
+			    </div>
+			    <div id="latlon">
+			        <i class="fa fa-map-marker"></i> LAT: <span id="lat"></span>, LON: <span id="lon"></span>
+			    </div>
+			</div>
+
+			<div class="cl100">
+
+				<div class="cl50">
+							<h3>INPUT</h3>
+							<span><i class="fa fa-file-text-o"></i> input file: <a href="" id="fileURL"><span id="inputFileName"></span></a></span>
+			        <div id="inputContentImage"><img /></div>
+							<span id="inputFileFormat"></span></span>
+							<div id="set_input">
+									<div id="invert_image_btn"></div>
+									<div id="mod_dpi"></div>
+					    </div>
+				</div>
+
+				<div class="cl50">
+							<h3>OUTPUT</h3>
+							<span><i class="fa fa-file-text-o"></i> output file: <a href="" id="fileURLOutput"><span id="outputFileName"></span></a>
+			        <div id="outputContentImage"><img /></div>
+							<span id="outputFileFormat"></span></span>
+							<div id="set_output">
+									<div id="mod_home"></div>
+									<div id="mod_jog"></div>
+									<div id="mod_move"></div>
+									<div id="mod_roland_machine"></div>
+									<div id="mod_speed"></div>
+									<div id="mod_xmin"></div>
+									<div id="mod_ymin"></div>
+									<div id="mod_zmin"></div>
+					    </div>
+				</div>
+			</div>
+
+			<div class="cl100">
+				<h3>PROCESS setting</h3>
+				<span><i class="fa fa-file-text-o"></i> process file: <a href="" id="fileURL"><span id="processFileName"></span></a></span>
+				<div class="cl50">
+							<div id="mod_climb"></div>
+							<div id="mod_conventional"></div>
+							<div id="mod_depth"></div>
+							<div id="mod_diameter"></div>
+							<div id="mod_error"></div>
+							<div id="mod_merge"></div>
+				</div>
+
+				<div class="cl50">
+							<div id="mod_offsets"></div>
+							<div id="mod_order"></div>
+							<div id="mod_overlap"></div>
+							<div id="mod_sequence"></div>
+							<div id="mod_sort"></div>
+							<div id="mod_threshold"></div>
+				</div>
+			</div>
+</div>
+
+<div id="timelineArea">
+      <div id="timelineDiv"></div>
+</div>
+
+<div id="mapArea">
+    <div id="mapDiv"></div>
+</div>
+
+</div>
+</body>
+</html>

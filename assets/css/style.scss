@@ -1,0 +1,91 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Main Stylesheet
+
+import files from partials and breakpoints.
+
+******************************************************************/
+
+
+/* ------------------------------
+IMPORTING PARTIALS
+------------------------------ */
+
+// import normalize
+@import "partials/normalize";
+
+// import typography
+@import "partials/typography";
+
+// import colors
+@import "partials/color";
+
+// import grid
+@import "partials/grid";
+
+// import mixins
+@import "partials/mixins";
+
+
+/* ------------------------------
+MEDIA QUERIES for width resolution.
+------------------------------ */
+
+/* BASE (MOBILE) SIZE */
+// styles in base.scss
+@import "breakpoints/base";
+
+/* SMALL MOBILE DEVICES */
+@media only screen and (min-width: 241px) {
+
+	// styles in 481up.scss
+	@import "breakpoints/241up";
+
+} // end of media query
+
+/* LARGER MOBILE DEVICES */
+@media only screen and (min-width: 481px) {
+
+	// styles in 481up.scss
+	@import "breakpoints/481up";
+
+} // end of media query
+
+/* TABLET & SMALLER LAPTOPS */
+@media only screen and (min-width: 768px) {
+
+	// styles in 768up.scss
+	@import "breakpoints/768up";
+
+} // end of media query
+
+
+/* LAPTOPS */
+@media only screen and (min-width: 1030px) {
+
+	// styles in 1030up.scss
+	@import "breakpoints/1030up";
+
+} // end of media query
+
+
+
+/* RETINA (2x RESOLUTION DEVICES) */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min--moz-device-pixel-ratio: 1.5),
+       only screen and (min-device-pixel-ratio: 1.5) {
+
+	// styles in 2x.scss
+	@import "breakpoints/2x";
+
+} // end of media query
+
+/* PRINT STYLESHEET */
+@media print {
+
+	// styles in print.scss
+	@import "partials/print";
+
+}

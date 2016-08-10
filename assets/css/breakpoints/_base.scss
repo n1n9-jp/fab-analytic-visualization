@@ -1,0 +1,327 @@
+/******************************************************************
+
+Stylesheet: Resolution over 1240px for DESKTOP.
+Also for default styles for every devices.
+
+******************************************************************/
+
+
+// html, body, #wrap, #mapContainer, #map {
+html, body, #wrap {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 100%;
+  background-color: #222 !important;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+/*
+  containers
+*/
+
+#wrap {
+  width: 100%;
+  // min-height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+#headerArea {
+    // height: 70px;
+    height: 100px;
+}
+
+#infoDetailArea {
+  z-index: 100;
+  float: right;
+
+  padding: 1rem 1rem 0 1rem;
+  color: #000;
+
+  margin-right: 20px;
+  margin-top: 0px;
+
+  // width: 260px;
+  width: 320px;
+  min-height: 400px;
+  // height: 600px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+#timelineArea {
+  z-index: 20;
+  font-size: 1.8rem;
+  min-height: 80px;
+
+  width: 100%;
+  // background-color: #111;
+
+  position: absolute;
+  left: 0;
+  top: 58px;
+}
+
+#mapArea {
+  position: absolute;
+  display: block;
+  z-index: 10;
+
+  width: 100%;
+  // height: 300px;
+  position: absolute;
+  left: 0;
+  // top: 200px;
+}
+
+
+
+/*
+  nagivations
+*/
+
+.radioBtnTitle {
+    text-align: center;
+    color: #FFF;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    font-size: 1.0rem;
+    display: block;
+}
+
+.menuHolder {
+  float: right;
+  // margin-right: 2rem;
+}
+
+.btnBlock {
+  width: 160px;
+  float: left;
+  margin-top: 0.4rem;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+#customBtn {
+  display: none;
+}
+
+#favnavi {
+    width: 100%;
+    background-color: #111;
+}
+
+
+
+/*
+  contents
+*/
+
+#timelineDiv {
+  margin: 0;
+  width: 100%;
+  background-color: rgba( 51, 51, 77, 0.8 );
+}
+
+#mapDIv {
+  z-index: -1;
+  position:absolute;
+  width: 100%;
+  height: 500px;
+  margin: 0;
+  // height: 100%;
+}
+
+#chartTimeline {
+  // background-color: #FF0000;
+	//background-color: rgba( 51, 51, 77, 0.8 );
+	// height: 100px;
+}
+
+
+
+/* ------------------------------
+Info Window
+------------------------------ */
+
+#date {
+  font-size: 1.6rem;
+  line-height: 1.4rem;
+  font-weight: bold;
+  color: #333;
+}
+
+#year, #month, #day {
+  display: inline;
+}
+
+#time {
+  line-height: 4.0rem;
+  font-size: 2.4rem;
+  font-weight: normal;
+  color: #333;
+}
+
+#timedata {
+  display: inline;
+}
+
+
+
+#latlon {
+  font-size: 1.2rem;
+  line-height: 2.0rem;
+  color: #333;
+  // margin-bottom: 3rem;
+}
+
+#lat, #lon {
+  display: inline;
+}
+
+.cl100 {
+  display: block;
+  width: 320px;
+  clear: both;
+  margin-bottom: 2rem;
+}
+
+.cl50 {
+  display: block;
+  // width: 40%;
+  width: 145px;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 2rem;
+}
+
+#set_input, #set_output {
+    padding-right: 0.4rem;
+}
+
+#set_input div, #set_output div {
+    margin-bottom: 0.2rem;
+}
+
+#content {
+  display: block;
+  color: #00334d;
+  font-size: 1.2rem;
+  line-height: 2.0rem;
+}
+
+#content span {
+  display: block;
+}
+
+#inputFileName, #outputFileName, #inputFileFormat, #outputFileFormat {
+  display: block;
+  margin-bottom: 1.0rem;
+  line-height: 1.2rem;
+  font-weight: bold;
+}
+
+#inputFileName .link,
+#outputFileName .link {
+  margin-bottom: 0.6rem;
+}
+
+/*#fileURL {
+  color: #FF0000;
+  text-decoration: undeline;
+}*/
+
+#inputContentImage {
+  width: 100%;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+#outputContentImage {
+  width: 100%;
+  display: block;
+}
+
+
+
+/* ------------------------------
+Bootstrap overwrite
+------------------------------ */
+
+.h3, h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 0;
+    color: #333;
+}
+
+.navbar {
+    border-radius: 0px !important;
+    margin-bottom: 0px !important;
+		font-size: 1.2rem;
+}
+
+.nav>li>a {
+    padding: 8px 12px;
+}
+
+.navbar-inverse .navbar-nav>.active>a {
+    color: #fff;
+    background-color: #222;
+}
+
+.btn {
+    font-size: 1rem;
+}
+
+/* ------------------------------
+ZMODAL overwrite
+------------------------------ */
+
+button.z-modal-btn {
+  border-width: 0 !important;
+}
+
+.z-modal-close {
+  display: none;
+}
+
+
+
+/* ------------------------------
+D3.js
+------------------------------ */
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #FFF;
+  stroke-weight: 0.4px;
+  opacity: 0.2;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font-size: 0.6rem;
+  letter-spacing: 0.2rem;
+  stroke: #CCC;
+}
+
+.x.axis text {
+  dy: -1rem;
+}
+
+// g.x.axis .domain {
+//   display: none;
+// }
+
+// .y.axis .tick text:first-child {
+//   display: none;
+// }
