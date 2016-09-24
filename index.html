@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=2.0,user-scalable=yes">
 <meta http-equiv="X-UA-Compatible" content="IE=9">
 
-<!-- metatag -->
+<!-- metainfo -->
 <meta name="copyright" content="" />
 <meta name="description" content="Visualization of working log all around the world using FabCam." />
 <meta name="keywords" content="" />
-<!-- /metatag -->
+<!-- /metainfo -->
 
 <!-- facebook -->
 <meta property="og:title" content="Fab Analytic Visualization">
@@ -56,56 +56,57 @@
 </head>
 <body>
 
-
 <div id="wrap">
 
-<nav class="navbar navbar-inverse" id="headerArea"><div class="container-fluid">
+<nav class="navbar navbar-inverse" id="headerArea">
+		<!-- <div class="container-fluid"> -->
 
-	  <div class="navbar-header">
+	  <!-- <div class="navbar-header"> -->
 	      <span class="navbar-brand">Fab Analytic Visualization</span>
-	  </div>
 
-		<!-- AUTOPLAY & VIEWMODE -->
-	  <div class="collapse navbar-collapse" id="head">
+				<div class="nav menuHolder">
 
-	      <div class="menuHolder">
-						<div class="btnBlock" id="customBtn">
-							    <div class="radioBtnTitle">CUSTOM</div>
-									<div class="btn-group" role="group" aria-label="...">
-									  <button type="button" class="btn btn-primary" id="prevBtn">PREV</button>
-									  <button type="button" class="btn btn-primary" id="nextBtn">NEXT</button>
-									</div>
-						</div>
+							<div class="btnBlock">
+										<div class="radioBtnTitle">View Mode</div>
+										<div class="btn-group" data-toggle="buttons" id="menuView">
+														<label class="btn btn-primary active">
+																<input type="radio" name="viewstate" id="option1" autocomplete="off" value="MAP" checked> MAP
+														</label>
+														<label class="btn btn-primary">
+																<input type="radio" name="viewstate" id="option2" autocomplete="off" value="TIMELINE"> TIMELINE
+														</label>
+										</div>
+							</div>
 
-						<div class="btnBlock" id="autoBtn">
-							    <div class="radioBtnTitle">AUTOPLAY</div>
-									<div class="btn-group" data-toggle="buttons" id="menuPlay">
-							            <label class="btn btn-primary active">
-							            		<input type="radio" name="playstate" id="option1" autocomplete="off" value="ON" checked> ON
-							            </label>
-							            <label class="btn btn-primary">
-							            		<input type="radio" name="playstate" id="option2" autocomplete="off" value="OFF"> OFF
-							            </label>
-							    </div>
-						</div>
-						<!-- <div class="btnBlock">
-									<div class="radioBtnTitle">VIEWMODE</div>
-							    <div class="btn-group" data-toggle="buttons" id="menuView">
-							            <label class="btn btn-primary active">
-							            		<input type="radio" name="viewstate" id="option1" autocomplete="off" value="MAP" checked> MAP
-							            </label>
-							            <label class="btn btn-primary">
-							            		<input type="radio" name="viewstate" id="option2" autocomplete="off" value="TIMELINE"> TIMELINE
-							            </label>
-							    </div>
-						</div> -->
-	        </div>
-	  </div>
+							<div class="btnBlock" id="autoBtn">
+										<div class="radioBtnTitle">Auto Play</div>
+										<div class="btn-group" data-toggle="buttons" id="menuPlay">
+														<label class="btn btn-primary active">
+																<input type="radio" name="playstate" id="option1" autocomplete="off" value="ON" checked> ON
+														</label>
+														<label class="btn btn-primary">
+																<input type="radio" name="playstate" id="option2" autocomplete="off" value="OFF"> OFF
+														</label>
+										</div>
+							</div>
+
+							<div class="btnBlock" id="customBtn">
+										<div class="radioBtnTitle">Manual Play</div>
+										<div class="btn-group" role="group" aria-label="...">
+											<button type="button" class="btn btn-primary" id="prevBtn">PREV</button>
+											<button type="button" class="btn btn-primary" id="nextBtn">NEXT</button>
+										</div>
+							</div>
+							
+				</div>
+	  <!-- </div> -->
+
 
 		<!-- 日付ナビ -->
 	  <ul class="nav navbar-nav" id="favnavi"></ul>
 
-</div></nav>
+<!-- </div> -->
+</nav>
 
 <div id="infoDetailArea">
 

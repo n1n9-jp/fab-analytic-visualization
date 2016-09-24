@@ -34,7 +34,7 @@ body {
 
 #headerArea {
     // height: 70px;
-    height: 100px;
+    height: 300px;
 }
 
 #infoDetailArea {
@@ -98,12 +98,12 @@ body {
 
 .menuHolder {
   float: right;
-  // margin-right: 2rem;
+  width: 100%;
 }
 
 .btnBlock {
   width: 160px;
-  float: left;
+  float: right;
   margin-top: 0.4rem;
   margin-bottom: 0.8rem;
   text-align: center;
@@ -114,6 +114,7 @@ body {
 }
 
 #favnavi {
+    float: left;
     width: 100%;
     background-color: #111;
 }

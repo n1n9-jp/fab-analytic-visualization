@@ -711,7 +711,7 @@ body {
   position: relative; }
 
 #headerArea {
-  height: 100px; }
+  height: 300px; }
 
 #infoDetailArea {
   z-index: 100;
@@ -755,11 +755,12 @@ body {
   display: block; }
 
 .menuHolder {
-  float: right; }
+  float: right;
+  width: 100%; }
 
 .btnBlock {
   width: 160px;
-  float: left;
+  float: right;
   margin-top: 0.4rem;
   margin-bottom: 0.8rem;
   text-align: center; }
@@ -768,6 +769,7 @@ body {
   display: none; }
 
 #favnavi {
+  float: left;
   width: 100%;
   background-color: #111; }
 
@@ -959,6 +961,12 @@ D3.js
   Stylesheet: Resolution between 768px to 1029px for TABLET & SMALLER LAPTOPS.
   
   ******************************************************************/
+  #headerArea {
+    height: 100px; }
+
+  .menuHolder {
+    width: 40%; }
+
   #infoDetail {
     width: 320px;
     min-height: 400px; }
@@ -976,6 +984,12 @@ D3.js
   Stylesheet: Resolution over 1030px for LAPTOPS.
   
   ******************************************************************/
+  #headerArea {
+    height: 100px; }
+
+  .menuHolder {
+    width: 40%; }
+
   #infoDetail {
     width: 320px;
     min-height: 400px; }
